@@ -65,15 +65,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Queue.cs" />
+    <Compile Include="Models\Workspace.cs" />
     <Compile Include="Services\IResourceHolder.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ResourceHolder.cs" />
     <Compile Include="Services\ServiceHolder.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\NotifyIconViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\SyncStatusWindowViewModel.cs" />
+    <Compile Include="ViewModel\WorkspaceViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SyncStatusWindow.xaml.cs">
+      <DependentUpon>SyncStatusWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +112,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
@@ -144,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SyncStatusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

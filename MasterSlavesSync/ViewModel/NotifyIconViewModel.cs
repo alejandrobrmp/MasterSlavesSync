@@ -1,16 +1,22 @@
-﻿using System;
+﻿using MasterSlavesSync.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MasterSlavesSync.ViewModel
 {
     public class NotifyIconViewModel : BaseViewModel
     {
-        private string _ToolTipText = "alone";
 
+        private readonly string STATUSWINDOWPATH = "@/../Views/SyncStatusWindow.xaml";
+
+        private SyncStatusWindowViewModel _StatusWindow;
+
+        private string _ToolTipText = "MasterSlavesSync";
         public string ToolTipText
         {
             get { return _ToolTipText; }
@@ -22,12 +28,12 @@ namespace MasterSlavesSync.ViewModel
         }
 
         private ICommand _DoubleClick;
-
         public ICommand DoubleClick => _DoubleClick;
 
         public NotifyIconViewModel()
         {
-            _DoubleClick = new RelayCommand(() => { App.Current.MainWindow.Visibility = System.Windows.Visibility.Visible; }, p => true);
+            _StatusWindow = (Application.LoadComponent(new Uri(STATUSWINDOWPATH, UriKind.Relative)) as SyncStatusWindow)
+                .DataContext as SyncStatusWindowViewModel;
         }
 
     }

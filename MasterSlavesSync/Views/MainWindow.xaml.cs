@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterSlavesSync.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,21 +16,13 @@ using System.Windows.Shapes;
 
 namespace MasterSlavesSync.Views
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            e.Cancel = true;
-            this.Visibility = Visibility.Hidden;
+            (DataContext as MainWindowViewModel).TaskbarIcon = App.NotifyIcon;
         }
     }
 }

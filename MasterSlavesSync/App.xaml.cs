@@ -1,5 +1,6 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using MasterSlavesSync.Services;
+using MasterSlavesSync.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,19 +17,20 @@ namespace MasterSlavesSync
     public partial class App : Application
     {
 
-        private TaskbarIcon notifyIcon;
+        private static TaskbarIcon notifyIcon;
+        public static TaskbarIcon NotifyIcon => notifyIcon;
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
             notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
+            new SyncStatusWindow().Show();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
         }
-
     }
 }
