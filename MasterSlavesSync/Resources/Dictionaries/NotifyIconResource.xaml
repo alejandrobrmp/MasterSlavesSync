@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MasterSlavesSync.Resources.Dictionaries"
+                    xmlns:taskbar="http://www.hardcodet.net/taskbar"
+                    xmlns:viewmodel="clr-namespace:MasterSlavesSync.ViewModel">
+
+    <ContextMenu x:Key="TrayMenu">
+        <MenuItem/>
+    </ContextMenu>
+
+    <taskbar:TaskbarIcon x:Key="NotifyIcon"
+                         IconSource="/MasterSlavesSync;component/Resources/icon.ico"
+                         ToolTipText="{Binding ToolTipText}"
+                         DoubleClickCommand="{Binding DoubleClick}">
+
+        <taskbar:TaskbarIcon.DataContext>
+            <viewmodel:NotifyIconViewModel/>
+        </taskbar:TaskbarIcon.DataContext>
+        
+    </taskbar:TaskbarIcon>
+    
+</ResourceDictionary>
