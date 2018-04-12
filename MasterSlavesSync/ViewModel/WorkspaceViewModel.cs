@@ -4,25 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace MasterSlavesSync.ViewModel
 {
 
-    public enum FileAction
-    {
-        Copy,
-        Delete,
-        Rename,
-        Update
-    }
-
     public class WorkspaceViewModel : BaseViewModel
     {
-        private Dictionary<FileAction, Models.Queue<Uri>> queues = new Dictionary<FileAction, Models.Queue<Uri>>();
 
-        private readonly FileSystemWatcher watcher;
         public Workspace Workspace { get; }
+        public List<Uri> Slaves => Workspace.Slaves;
+        private WorkspaceFileManager workspaceFileManager;
 
         private int _CopiesRemaining;
         public int CopiesRemaining
@@ -86,42 +80,19 @@ namespace MasterSlavesSync.ViewModel
             }
         }
 
+
+
         public WorkspaceViewModel(Workspace workspace)
         {
             Workspace = workspace;
             Workspace.OnSlavesChanged += Workspace_OnSlavesChanged;
-
-            GenerateQueues();
-
-            watcher = new FileSystemWatcher(
-                Workspace.Master.AbsolutePath, 
-                (NotifyFilters.LastAccess | 
-                NotifyFilters.LastWrite | 
-                NotifyFilters.FileName |
-                NotifyFilters.DirectoryName).ToString());
-
-            watcher.Created += Watcher_FileChange;
-            watcher.Deleted += Watcher_FileChange;
-            watcher.Renamed += Watcher_FileChange;
-            watcher.Changed += Watcher_FileChange;
-
+            workspaceFileManager = new WorkspaceFileManager(Workspace);
+            workspaceFileManager.ReportProgress += WorkspaceFileManager_ReportProgress;
         }
 
-        private void GenerateQueues()
+        private void WorkspaceFileManager_ReportProgress(FileAction action, int value)
         {
-            Models.Queue<Uri> copyQueue = new Models.Queue<Uri>();
-            copyQueue.OnItemAdded += CopyQueue_OnItemAdded;
-            Models.Queue<Uri> deleteQueue = new Models.Queue<Uri>();
-            deleteQueue.OnItemAdded += DeleteQueue_OnItemAdded;
-            Models.Queue<Uri> renameQueue = new Models.Queue<Uri>();
-            renameQueue.OnItemAdded += RenameQueue_OnItemAdded;
-            Models.Queue<Uri> updateQueue = new Models.Queue<Uri>();
-            updateQueue.OnItemAdded += UpdateQueue_OnItemAdded;
-
-            queues.Add(FileAction.Copy, copyQueue);
-            queues.Add(FileAction.Delete, deleteQueue);
-            queues.Add(FileAction.Rename, renameQueue);
-            queues.Add(FileAction.Update, updateQueue);
+            
         }
 
         private void EvaluateIsSyncing()
@@ -133,59 +104,9 @@ namespace MasterSlavesSync.ViewModel
                 UpdatesRemaining != 0;
         }
 
-        private void CopyQueue_OnItemAdded()
+        private void Workspace_OnSlavesChanged(object sender)
         {
-            Uri file;
-            while ((file = queues[FileAction.Copy].GetNext()) != null)
-            {
-                List<Uri> slaves = Workspace.GetSlavesPaths(file);
-                foreach (var item in slaves)
-                {
-
-                }
-            }
-        }
-
-        private void DeleteQueue_OnItemAdded()
-        {
-            
-        }
-
-        private void RenameQueue_OnItemAdded()
-        {
-
-        }
-
-        private void UpdateQueue_OnItemAdded()
-        {
-
-        }
-
-        private void Watcher_FileChange(object sender, FileSystemEventArgs e)
-        {
-            Uri uri = new Uri(e.FullPath);
-
-            switch (e.ChangeType)
-            {
-                case WatcherChangeTypes.Created:
-                    break;
-                case WatcherChangeTypes.Deleted:
-                    break;
-                case WatcherChangeTypes.Changed:
-                    break;
-                case WatcherChangeTypes.Renamed:
-                    break;
-                case WatcherChangeTypes.All:
-                    break;
-                default:
-                    break;
-            }
-
-        }
-
-        private void Workspace_OnSlavesChanged()
-        {
-            
+            OnPropertyChanged(nameof(Slaves));
         }
     }
 }

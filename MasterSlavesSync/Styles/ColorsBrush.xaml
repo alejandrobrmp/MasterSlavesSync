@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MasterSlavesSync.Styles">
+
+    <!-- General Content -->
+
+    <SolidColorBrush x:Key="Transparent_Brush" Color="{StaticResource Transparent}"/>
+
+    <SolidColorBrush x:Key="PrimaryVeryLight_Brush" Color="{StaticResource PrimaryVeryLight}"/>
+    <SolidColorBrush x:Key="PrimaryNotSoLight_Brush" Color="{StaticResource PrimaryNotSoLight}"/>
+    <SolidColorBrush x:Key="PrimaryLight_Brush" Color="{StaticResource PrimaryLight}"/>
+    <SolidColorBrush x:Key="Primary_Brush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="PrimaryDark_Brush" Color="{StaticResource PrimaryDark}"/>
+    <SolidColorBrush x:Key="PrimaryVeryDark_Brush" Color="{StaticResource PrimaryVeryDark}"/>
+    
+    <SolidColorBrush x:Key="SecondaryVeryLight_Brush" Color="{StaticResource SecondaryVeryLight}"/>
+    <SolidColorBrush x:Key="SecondaryLight_Brush" Color="{StaticResource SecondaryLight}"/>
+    <SolidColorBrush x:Key="Secondary_Brush" Color="{StaticResource Secondary}"/>
+    <SolidColorBrush x:Key="SecondaryDark_Brush" Color="{StaticResource SecondaryDark}"/>
+    <SolidColorBrush x:Key="SecondaryVeryDark_Brush" Color="{StaticResource SecondaryVeryDark}"/>
+    
+    <!-- Button -->
+
+    <SolidColorBrush x:Key="ButtonBackground_Brush" Color="{StaticResource PrimaryVeryLight}"/>
+    <SolidColorBrush x:Key="ButtonBorder_Brush" Color="{StaticResource PrimaryVeryLight}"/>
+    <SolidColorBrush x:Key="ButtonBorderOver_Brush" Color="{StaticResource ButtonBorderOver}"/>
+    <SolidColorBrush x:Key="ButtonBackgroundPressed_Brush" Color="{StaticResource ButtonBackgroundPressed}"/>
+
+    <!-- ListView -->
+
+    <SolidColorBrush x:Key="ListViewBackground_Brush" Color="{StaticResource ListViewBackground}"/>
+    <SolidColorBrush x:Key="ListViewBorderColor_Brush" Color="{StaticResource ListViewBorder}"/>
+
+</ResourceDictionary>

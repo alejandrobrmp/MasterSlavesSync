@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,12 @@ namespace MasterSlavesSync.Models
     public class Workspace
     {
 
-        public delegate void SlavesChanged();
+        public static Uri FILE_PATH { get; } = new Uri(Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "MasterSlavesSync/Workspaces.json"
+            ));
+
+        public delegate void SlavesChanged(object sender);
         public event SlavesChanged OnSlavesChanged;
 
         public Uri Master { get; set; }
@@ -47,7 +53,7 @@ namespace MasterSlavesSync.Models
 
             Slaves.Add(slave);
 
-            OnSlavesChanged?.Invoke();
+            OnSlavesChanged?.Invoke(this);
         }
 
         public List<Uri> GetSlavesPaths(Uri file)

@@ -12,10 +12,6 @@ namespace MasterSlavesSync.ViewModel
     public class NotifyIconViewModel : BaseViewModel
     {
 
-        private readonly string STATUSWINDOWPATH = "@/../Views/SyncStatusWindow.xaml";
-
-        private SyncStatusWindowViewModel _StatusWindow;
-
         private string _ToolTipText = "MasterSlavesSync";
         public string ToolTipText
         {
@@ -32,8 +28,7 @@ namespace MasterSlavesSync.ViewModel
 
         public NotifyIconViewModel()
         {
-            _StatusWindow = (Application.LoadComponent(new Uri(STATUSWINDOWPATH, UriKind.Relative)) as SyncStatusWindow)
-                .DataContext as SyncStatusWindowViewModel;
+            
         }
 
     }

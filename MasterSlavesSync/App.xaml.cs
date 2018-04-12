@@ -16,20 +16,17 @@ namespace MasterSlavesSync
     /// </summary>
     public partial class App : Application
     {
-
-        private static TaskbarIcon notifyIcon;
-        public static TaskbarIcon NotifyIcon => notifyIcon;
-
+        private TaskbarIcon taskbar;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
-            new SyncStatusWindow().Show();
+            ServiceHolder.GetService<WorkspaceService>();
+            taskbar = ServiceHolder.GetService<TaskbarService>().NotifyIcon;
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
+            taskbar.Dispose();
             base.OnExit(e);
         }
     }

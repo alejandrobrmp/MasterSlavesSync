@@ -11,7 +11,8 @@
     <taskbar:TaskbarIcon x:Key="NotifyIcon"
                          IconSource="/MasterSlavesSync;component/Resources/icon.ico"
                          ToolTipText="{Binding ToolTipText}"
-                         DoubleClickCommand="{Binding DoubleClick}">
+                         DoubleClickCommand="{Binding DoubleClick}"
+                         ContextMenu="{StaticResource TrayMenu}">
 
         <taskbar:TaskbarIcon.DataContext>
             <viewmodel:NotifyIconViewModel/>

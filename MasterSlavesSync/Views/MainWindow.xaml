@@ -4,16 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterSlavesSync.Views"
-        xmlns:viewmodel="clr-namespace:MasterSlavesSync.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Master Slaves Sync"
+        Height="450"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
 
-    <Window.DataContext>
-        <viewmodel:MainWindowViewModel/>
-    </Window.DataContext>
-    
-    <Grid>
-        
-    </Grid>
+    <Border Style="{StaticResource LayoutParent_Border}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Style="{StaticResource LayoutChild_Border}">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource IconButton_Button}"
+                            Content="/MasterSlavesSync;component/Resources/AddFolderIcon.ico"
+                            ToolTip="Create new Workspace"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource LayoutChild_Border}"
+                    Grid.Row="1">
+
+                <ListView Style="{StaticResource Generic_ListView}"
+                          ItemContainerStyle="{StaticResource Generic_ListViewItem}">
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                    <TextBlock Text="asdsadas"/>
+                </ListView>
+                
+            </Border>
+
+        </Grid>
+    </Border>
     
 </Window>
