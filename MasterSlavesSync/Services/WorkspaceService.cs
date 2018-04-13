@@ -10,7 +10,8 @@ namespace MasterSlavesSync.Services
 {
     public class WorkspaceService : IService
     {
-        public Dictionary<Workspace, WorkspaceViewModel> Workspaces { get; private set; }
+        public Dictionary<Workspace, WorkspaceViewModel> Workspaces { get; private set; } =
+            new Dictionary<Workspace, WorkspaceViewModel>();
 
         public WorkspaceService()
         {

@@ -5,7 +5,7 @@
                     xmlns:viewmodel="clr-namespace:MasterSlavesSync.ViewModel">
 
     <ContextMenu x:Key="TrayMenu">
-        <MenuItem/>
+        <MenuItem Header="Exit"/>
     </ContextMenu>
 
     <taskbar:TaskbarIcon x:Key="NotifyIcon"

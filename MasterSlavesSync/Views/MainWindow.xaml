@@ -4,12 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterSlavesSync.Views"
+        xmlns:controls="clr-namespace:MasterSlavesSync.Controls"
+        xmlns:viewmodel="clr-namespace:MasterSlavesSync.ViewModel"
         mc:Ignorable="d"
         Title="Master Slaves Sync"
         Height="450"
         Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
+
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
 
     <Border Style="{StaticResource LayoutParent_Border}">
         <Grid>
@@ -22,7 +28,8 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Style="{StaticResource IconButton_Button}"
                             Content="/MasterSlavesSync;component/Resources/AddFolderIcon.ico"
-                            ToolTip="Create new Workspace"/>
+                            ToolTip="Create new Workspace"
+                            Click="Button_Click"/>
                 </StackPanel>
             </Border>
 
@@ -30,14 +37,9 @@
                     Grid.Row="1">
 
                 <ListView Style="{StaticResource Generic_ListView}"
-                          ItemContainerStyle="{StaticResource Generic_ListViewItem}">
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
-                    <TextBlock Text="asdsadas"/>
+                          ItemContainerStyle="{StaticResource Generic_ListViewItem}"
+                          ItemsSource="{Binding Workspaces}">
+                    
                 </ListView>
                 
             </Border>

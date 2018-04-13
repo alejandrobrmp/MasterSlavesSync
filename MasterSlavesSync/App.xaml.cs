@@ -20,7 +20,6 @@ namespace MasterSlavesSync
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            ServiceHolder.GetService<WorkspaceService>();
             taskbar = ServiceHolder.GetService<TaskbarService>().NotifyIcon;
         }
 

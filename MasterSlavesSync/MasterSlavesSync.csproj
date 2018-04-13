@@ -68,6 +68,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\TextInput.cs" />
+    <Compile Include="Models\IDialog.cs" />
+    <Compile Include="Models\DialogResponse.cs" />
     <Compile Include="Models\WorkspaceFileManager.cs" />
     <Compile Include="Models\Queue.cs" />
     <Compile Include="Models\Workspace.cs" />
@@ -86,6 +89,9 @@
     <Compile Include="ViewModel\WorkspaceViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewWorkspaceDialog.xaml.cs">
+      <DependentUpon>NewWorkspaceDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NewWorkspaceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AddFolderIcon.ico">
@@ -152,7 +162,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

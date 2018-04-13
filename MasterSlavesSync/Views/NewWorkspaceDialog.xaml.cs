@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterSlavesSync.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,19 +16,21 @@ using System.Windows.Shapes;
 namespace MasterSlavesSync.Views
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para NewWorkspaceDialog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewWorkspaceDialog : Window, IDialog<Workspace>
     {
-        public MainWindow()
+        public NewWorkspaceDialog(Window owner)
         {
             InitializeComponent();
-            
+            this.Owner = owner;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public DialogResponse<Workspace> ShowDialog(DialogResponse<Workspace> defaultResponse)
         {
-            new NewWorkspaceDialog(this).ShowDialog(null);
+            ShowDialog();
+
+            return defaultResponse;
         }
     }
 }
